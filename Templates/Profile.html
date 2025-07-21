@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Single-Product:Greenery{% endblock %}
+
+{% block content %}
+
+
+<style>
+    #profile-container {
+
+        padding: 5px;
+    }
+
+    .profile-heading {
+        color: #606C1B;
+        font-size: 36px;
+        font-style: italic;
+    }
+
+    .profile-image-container {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .profile-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .profile-details {
+        color: #0E0E0E;
+    }
+
+    .profile-details b {
+        font-weight: bold;
+    }
+
+    .ho {
+            color: #ffff ;
+            font-size: 36px;
+            margin-bottom: 20px;
+            border: 1px solid #6CF3A3;
+            background-color:#177E3E;
+            padding: 5px;
+            border-radius: 3px;
+            display: inline-block;
+            font-family: serif;
+        }
+</style>
+<br><br>
+
+    <div class="container" id="profile-container">
+        <div class="row justify-content-center">
+                <div class="profile-box p-3">
+                    <h1 class="ho">Profile</h1>
+                </div>
+        </div>
+    </div>
+
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="profile-box border p-3" >
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            <div class="profile-image-container text-center" style="background-color:#E0E4E1 ;">
+                                <img src="{{ profile.photo.url }}" alt="Profile Image" class="img-fluid p-3">
+                            </div>
+                        </div>
+                        <div class="col-md-7 p-5 text-center" style="font-family: monospace;">
+                            <b class="profile-details" style="font-style: italic;">Name</b>
+                            <p>{{profile.first_name}} {{profile.last_name}}</p>
+
+                            <b class="profile-details" style="font-style: italic;">Address</b>
+                            <p>{{profile.address}}</p>
+
+                            <b class="profile-details" style="font-style: italic;">Phone</b>
+                            <p>{{profile.phone}}</p>
+
+                            <b class="profile-details" style="font-style: italic;">Email</b>
+                            <p>{{profile.id}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

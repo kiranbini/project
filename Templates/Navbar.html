@@ -1,0 +1,59 @@
+<div class="site-navbar py-2">
+
+      <div class="search-wrap">
+        <div class="container">
+          <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+          <form action="{% url 'product_search' %}" method="get">
+            {% csrf_token %}
+            <input type="text" class="form-control" placeholder="Search keyword and hit enter..." name="q">
+          </form>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="index.html" class="js-logo-clone">Greenery</a>
+            </div>
+          </div>
+          <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'shop' %}">Store</a></li>
+                <li class="has-children">
+                  <a href="#">Category</a>
+                  <ul class="dropdown">
+                    {% for c in cat %}
+                    <li><a href="{% url 'by_category' c.link %}">{{c.category}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'order_view' %}">View Order</a></li>
+                <li><a href="{% url 'Customer:logout' %}">Logout</a></li>
+
+                {% else %}
+                <li><a href="{% url 'Customer:register' %}">Register</a></li>
+                <li><a href="{% url 'Customer:login' %}">Login</a></li>
+                {% endif %}
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="icons">
+            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+            <a href="{% url 'Customer:profile' %}" class="icons-btn d-inline-block bag">
+                <i class="fa-solid fa-user"></i>
+            </a>
+            <a href="{% url 'cart_detail' %}" class="icons-btn d-inline-block bag">
+              <span class="icon-shopping-bag"></span>
+            </a>
+            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
+                class="icon-menu"></span></a>
+          </div>
+        </div>
+      </div>
+</div>
